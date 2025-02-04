@@ -1,5 +1,6 @@
 # Input files for "Characterizing the conformational ensemble of PROTAC degraders in solutions via atomistic simulations"
 
+Supporting Information for:
 - S. Bhusal and O. Valsson    
 *Characterizing the conformational ensemble of PROTAC degraders in solutions via atomistic simulations*    
 ChemRxiv Preprint, submitted to Phys. Chem. Chem. Phys. (2025)    
@@ -19,7 +20,7 @@ Omar Valsson - omar.valsson@unt.edu
 *University of North Texas*    
 *Denton, Texas, USA*    
 ORCID: [0000-0001-7971-4767](https://orcid.org/0000-0001-7971-4767)     
-Group Website : www.valsson.info
+Website: www.valsson.info
 
 ## Software
 Files were run with the following codes:
@@ -27,15 +28,19 @@ Files were run with the following codes:
 - PLUMED 2.8.2 enhanced sampling plug-in code 
 - VMD 1.9.3 for trajectory analysis
 
-##File Overview:
+## File Overview:
 
-- All the .gro, .itp and .top files for each solvent (Water, Chloroform, and DMSO) are located in their respective folders.
-- The molecular dynamics parameters can be found in the md-npt.mdp file.
-- The collective variables (CVs) are clearly listed in the plumed_pbmetad.dat file.
-- For DMSO and chloroform, we did not use gmx tune_pme tool for the simulation. gmx tune_pme tool is disabled by setting -tunepme no in the simulation command.
-- plumed_pbmetad.dat file defines all the collective variables illustrated in the paper for parallel bias metadynamics.
-- plumed_lastbias.dat file is used for the reweighting to remove the effect of bias.
-- plumed_read.dat file includes the arrangement of collective variables in specific folder.
+- All the .gro, .itp and .top files for each solvent are located in their respective folders under `Input_Files`
+  - Water: `Input_Files/Water`
+  - Chloroform: `Input_Files/Chloroform`
+  - DMSO: `Input_Files/DMSO`
+- The GROMACS molecular dynamics parameters can be found in the `md-npt.mdp` file.
+- The DMSO and chloroform simulations were run with the `-tunepme no` flag to disable the PME parameter tuning at run time. 
+- The Parallel Bias Metadynamics simulations are run using the following PLUMED input files:
+  - `plumed_pbmetad.dat`: include all CVs defined in the simulations and the PBMetaD bias.
+- The last bias reweighting post-processing was run using the `plumed driver` using the following PLUMED input files: 
+  - `plumed_lastbias.dat`
+  - `plumed_read.dat`: used to read from files the relevant CVs for the reweighting
 
 ## License
 Copyright (c) 2025 Shikshya Bhusal and Omar Valsson
