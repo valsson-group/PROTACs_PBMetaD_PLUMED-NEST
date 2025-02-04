@@ -1,0 +1,10 @@
+File Overview:
+
+- All the .gro, .itp and .top files for each solvent (Water, Chloroform, and DMSO) are located in their respective folders.
+- The molecular dynamics parameters can be found in the md-npt.mdp file.
+- The collective variables (CVs) are clearly listed in the plumed_pbmetad.dat file.
+- For DMSO and chloroform, we did not use gmx tune_pme tool for the simulation. gmx tune_pme tool is disabled by setting -tunepme no in the simulation command.
+- plumed_pbmetad.dat file defines all the collective variables illustrated in the paper for parallel bias metadynamics.
+- plumed_lastbias.dat file is used for the reweighting to remove the effect of bias.
+- plumed_read.dat file includes the arrangement of collective variables in specific folder.
+

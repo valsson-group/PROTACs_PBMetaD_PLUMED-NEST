@@ -1,0 +1,37 @@
+##Reweighting
+
+RESTART
+
+INCLUDE FILE=plumed_read.dat
+
+PBMETAD ...
+ LABEL=pbmetad
+ ARG=t_brd4_4,t_brd4_5,t_brd4_6,t_brd4_7,t_linker_1,t_linker_2,t_linker_3,t_linker_4,t_linker_5,t_linker_6,t_linker_7,t_linker_8,t_linker_9,t_vhl_1,t_vhl_2,t_vhl_3,t_vhl_4,t_vhl_5,t_vhl_6,t_vhl_7,t_vhl_8,t_vhl_9,t_vhl_10,t_vhl_11,t_vhl_12,t_vhl_13
+ PACE=500000000
+ BIASFACTOR=24
+ HEIGHT=0 
+ SIGMA=0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2
+ GRID_MIN=-pi,-pi,-pi,-pi,-pi,-pi,-pi,-pi,-pi,-pi,-pi,-pi,-pi,-pi,-pi,-pi,-pi,-pi,-pi,-pi,-pi,-pi,-pi,-pi,-pi,-pi
+ GRID_MAX=pi,pi,pi,pi,pi,pi,pi,pi,pi,pi,pi,pi,pi,pi,pi,pi,pi,pi,pi,pi,pi,pi,pi,pi,pi,pi
+ TEMP=300
+... PBMETAD
+
+
+PRINT ...
+ ARG=rgyr,cmap,energy,volume,pbmetad.*
+ FILE=colvar_main.lastbias_8-microsec.data
+ STRIDE=500
+...
+
+PRINT ...
+ ARG=d_tbut_ph_brd4,d_tbut_S_5ring_brd4,d_tbut_N_ring_brd4,d_tbut_N_5ring_brd4,d_ph_brd4_linker,d_ph_vhl_linker,d_ph_brd4_ph_vhl,d_ph_vhl_S_5ring_brd4,d_ph_vhl_N_ring_brd4,d_ph_vhl_N_5ring_brd4,d_s_vhl_ph_brd4,d_s_S_5ring_brd4,d_s_N_ring_brd4,d_s_N_5ring_brd4,d_n_vhl_ph_brd4,d_n_vhl_S_5ring_brd4,d_n_vhl_N_ring_brd4,d_n_vhl_N_5ring_brd4,pbmetad.*
+ FILE=colvar_distances.lastbias_8-microsec.data 
+ STRIDE=500
+...
+
+PRINT ...
+ ARG=t_brd4_1,t_brd4_2,t_brd4_3,t_brd4_4,t_brd4_5,t_brd4_6,t_brd4_7,t_linker_1,t_linker_2,t_linker_3,t_linker_4,t_linker_5,t_linker_6,t_linker_7,t_linker_8,t_linker_9,t_vhl_1,t_vhl_2,t_vhl_3,t_vhl_4,t_vhl_5,t_vhl_6,t_vhl_7,t_vhl_8,t_vhl_9,t_vhl_10,t_vhl_11,t_vhl_12,t_vhl_13,pbmetad.*
+ FILE=colvar_angles.lastbias_8-microsec.data 
+ STRIDE=500
+... 
+
