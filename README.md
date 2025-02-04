@@ -1,6 +1,6 @@
 # Input files for "Characterizing the conformational ensemble of PROTAC degraders in solutions via atomistic simulations"
 
-- S. Bhusal and **O. Valsson**    
+- S. Bhusal and O. Valsson    
 *Characterizing the conformational ensemble of PROTAC degraders in solutions via atomistic simulations*    
 ChemRxiv Preprint, submitted to Phys. Chem. Chem. Phys. (2025)    
 ChemRxiv: [10.26434/chemrxiv-2025-bxf47](https://doi.org/10.26434/chemrxiv-2025-bxf47)
