@@ -1,6 +1,11 @@
-##this file defines all the collective variables illustrated in the paper
+## This PLUMED input file should be used to run the PB-MetaD simulations
+## It defines all the collective variables used in the biasing and analysis
 
-##defining the center atoms for each heavy moieties
+## Energy and volume
+energy: ENERGY
+volume: VOLUME
+
+## Defining the center atoms for each heavy moieties
 tbut: CENTER ATOMS=26-29
 s_vhl: CENTER ATOMS=2-6
 n_vhl: CENTER ATOMS=17-22
@@ -11,8 +16,7 @@ N_ring_brd4: CENTER ATOMS=47-49,54,55,61,62
 N_5ring_brd4: CENTER ATOMS=49-52,54
 linker: CENTER ATOMS=33-42
 
-
-##defining distances between the brd4 and vhl moieties
+## Defining distances between the brd4 and vhl moieties
 d_tbut_ph_brd4: DISTANCE ATOMS=tbut,ph_brd4
 d_tbut_S_5ring_brd4: DISTANCE ATOMS=tbut,S_5ring_brd4
 d_tbut_N_ring_brd4: DISTANCE ATOMS=tbut,N_ring_brd4
@@ -32,11 +36,10 @@ d_n_vhl_S_5ring_brd4:  DISTANCE ATOMS=n_vhl,S_5ring_brd4
 d_n_vhl_N_ring_brd4:  DISTANCE ATOMS=n_vhl,N_ring_brd4
 d_n_vhl_N_5ring_brd4:  DISTANCE ATOMS=n_vhl,N_5ring_brd4
 
-##calculating radius of gyration using the backbone C-atoms
+## Calculating radius of gyration using the backbone C-atoms
 rgyr: GYRATION ATOMS=1,2,4,6,7,8,9,10,11,12,13,15,17,18,19,21,23,25,26,27,28,29,31,33,35,36,38,39,41,42,44,46,47,49,52,53,55,57,58,59,60,61,62,63,64,65,66,67,68,69
 
-
-##defining dihedral angles
+## Defining dihedral angles
 t_brd4_1:   TORSION ATOMS=50,49,47,46
 t_brd4_2:   TORSION ATOMS=69,63,62,48
 t_brd4_3:   TORSION ATOMS=63,62,48,47
@@ -67,7 +70,7 @@ t_vhl_11:    TORSION ATOMS=13,12,9,8
 t_vhl_12:    TORSION ATOMS=8,7,6,2
 t_vhl_13:    TORSION ATOMS=7,6,2,1
 
-##bias parameters
+## Bias parameters
 PBMETAD ...
  LABEL=pbmetad
  ARG=t_brd4_4,t_brd4_5,t_brd4_6,t_brd4_7,t_linker_1,t_linker_2,t_linker_3,t_linker_4,t_linker_5,t_linker_6,t_linker_7,t_linker_8,t_linker_9,t_vhl_1,t_vhl_2,t_vhl_3,t_vhl_4,t_vhl_5,t_vhl_6,t_vhl_7,t_vhl_8,t_vhl_9,t_vhl_10,t_vhl_11,t_vhl_12,t_vhl_13
@@ -79,12 +82,12 @@ PBMETAD ...
  GRID_MAX=pi,pi,pi,pi,pi,pi,pi,pi,pi,pi,pi,pi,pi,pi,pi,pi,pi,pi,pi,pi,pi,pi,pi,pi,pi,pi
 ... PBMETAD
 
-##PACE value of 250 means that the bias will be updated every 250 steps.
-##BIASFACTOR parameter controls the strength of the biasing potential applied to the selected collective variables (CVs). A higher bias factor generally leads to a stronger biasing force.
-##HEIGHT parameter defines the height of the Gaussian biasing potential applied to the CVs. It determines how much bias is applied at the center of the Gaussian, with a higher value indicating a stronger bias.
-##SIGMA parameter defines the width of the Gaussian biasing potential for each CV. In this case, it appears to be a list of values (0.2 for each CV) that specifies how spread out the Gaussian functions are for each of the selected atoms/groups.
-##GRID_MIN sets the minimum values for the grid points in the multidimensional space defined by the CVs. The values are set to -pi for each CV, indicating the lower bound of the biasing potential.
-##GRID_MAX sets the maximum values for the grid points in the multidimensional space defined by the CVs. The values are set to pi for each CV, indicating the upper bound of the biasing potential.
+## PACE value of 250 means that the bias will be updated every 250 steps.
+## BIASFACTOR parameter controls the strength of the biasing potential applied to the selected collective variables (CVs). A higher bias factor generally leads to a stronger biasing force.
+## HEIGHT parameter defines the height of the Gaussian biasing potential applied to the CVs. It determines how much bias is applied at the center of the Gaussian, with a higher value indicating a stronger bias.
+## SIGMA parameter defines the width of the Gaussian biasing potential for each CV. In this case, it appears to be a list of values (0.2 for each CV) that specifies how spread out the Gaussian functions are for each of the selected atoms/groups.
+## GRID_MIN sets the minimum values for the grid points in the multidimensional space defined by the CVs. The values are set to -pi for each CV, indicating the lower bound of the biasing potential.
+## GRID_MAX sets the maximum values for the grid points in the multidimensional space defined by the CVs. The values are set to pi for each CV, indicating the upper bound of the biasing potential.
 
 PRINT ...
  ARG=rgyr,energy,volume,pbmetad.*
