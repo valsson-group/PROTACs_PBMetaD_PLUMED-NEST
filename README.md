@@ -38,9 +38,11 @@ Files were run with the following codes:
 - The DMSO and chloroform simulations were run with the `-tunepme no` flag to disable the PME parameter tuning at run time. 
 - The Parallel Bias Metadynamics simulations are run using the following PLUMED input files:
   - `plumed_pbmetad.dat`: include all CVs defined in the simulations and the PBMetaD bias.
-- The last bias reweighting post-processing was run using the `plumed driver` using the following PLUMED input files: 
-  - `plumed_lastbias.dat`
-  - `plumed_read.dat`: used to read from files the relevant CVs for the reweighting
+  - This file should be located in the same folder as the MD files. 
+- The last bias reweighting post-processing was run using the `plumed driver` using the following PLUMED input files in the `Reweighting-Example/LastBiasReweighting_8microsec/` folder: 
+  - `plumed_lastbias.dat`: Reads in the deposited Gaussians and calculates the biasing weights for each configuration. 
+  - `plumed_read.dat`: used to read from the colvar files the relevant CVs for the reweighting.
+  - These input files will read in the colvar files from the parent folder (`../`)and create new colvar files with the appropriate biasing weights that can be used to obtain reweighted free energy surfaces and densities. These files should be located in a sub-folder of the runs. 
 
 ## License
 Copyright (c) 2025 Shikshya Bhusal and Omar Valsson
