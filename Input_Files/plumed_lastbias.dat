@@ -16,8 +16,6 @@ PBMETAD ...
  TEMP=300
 ... PBMETAD
 
-energy:ENERGY
-volume:VOLUME
 
 PRINT ...
  ARG=rgyr,cmap,energy,volume,pbmetad.*
